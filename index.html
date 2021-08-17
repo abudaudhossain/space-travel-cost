@@ -44,13 +44,10 @@
 
               <label for="mars" class="pt-3">Journey To Mars 🌏👨‍✈️</label>
               <input id="mars-input" type="number" value="0" class="form-control mt-2" />
-
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-
-                  <div onclick = "getQuantity('mars-input', true, true)" class="btn btn-primary mt-2">+</div>
-                  <div onclick = "getQuantity('mars-input', true, false)" id="subtrac-btn" class="btn btn-primary mt-2">-</div>
-
+                  <div onclick = "getQuantityHandelar('mars-input', true, true)" class="btn btn-primary mt-2">+</div>
+                  <div onclick = "getQuantityHandelar('mars-input', true, false)" id="subtrac-btn" class="btn btn-primary mt-2">-</div>
                 </div>
                 <div>Cost: $ <span id="mars-cost">00</span></div>
               </div>
@@ -62,10 +59,8 @@
 
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-
-                  <div onclick = "getQuantity('moon-input', false, true)" class="btn btn-primary mt-2">+</div>
-                  <div onclick = "getQuantity('moon-input', false, false)" class="btn btn-primary mt-2">-</div>
-
+                  <div onclick = "getQuantityHandelar('moon-input', false, true)" class="btn btn-primary mt-2">+</div>
+                  <div onclick = "getQuantityHandelar('moon-input', false, false)" class="btn btn-primary mt-2">-</div>
                 </div>
                 <div>Cost: $ <span id="moon-cost">00</span></div>
               </div>
@@ -76,52 +71,6 @@
         </div>
       </div>
     </div>
-    <!-- <script src="main.js"></script> -->
-
-    <script>
-     
-      function getQuantity(idName,isMars,isAdd){
-        const inputFeild = document.getElementById(idName);
-        inputFeildValue = parseInt(inputFeild.value);
-        if(isAdd){
-          inputFeildValue ++;
-        }else{
-          if(inputFeildValue >= 1){
-            inputFeildValue --;
-          }  
-        } 
-       inputFeild.value = inputFeildValue;
-       const netTiketCost = getNetMarsTiketCost(inputFeildValue, isMars);
-       setTiketCost(netTiketCost, isMars);
-       getTotalCost();
-      }
-
-
-      // net tiketCost 
-      function getNetMarsTiketCost(quantity, isMars){
-        let perTiketCost;
-        if(isMars){
-           perTiketCost = 500;
-        }else{
-           perTiketCost = 300;
-        }
-        const netCost = quantity *perTiketCost
-          return netCost;
-      }
-      // set tiketCost 
-      function setTiketCost(tiketCost, isMars){
-        if(isMars){
-          document.getElementById('mars-cost').innerText = tiketCost;
-        }else{
-          document.getElementById('moon-cost').innerText = tiketCost;
-        }
-      }
-
-      // set total cost 
-      function getTotalCost(){
-        const totalCost = parseInt(document.getElementById('mars-cost').innerText) + parseInt(document.getElementById('moon-cost').innerText );
-        document.getElementById('total-cost').innerText = totalCost;
-      }
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
